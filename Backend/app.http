@@ -1,6 +1,6 @@
 //Register User
 
-POST http://localhost:6000/user/register
+POST http://localhost:4000/user/register
 Content-Type: application/json
 
 {
@@ -12,7 +12,7 @@ Content-Type: application/json
 }
 
 ###Login user
-POST http://localhost:6000/user/login
+POST http://localhost:4000/user/login
 Content-Type: application/json
 
 {

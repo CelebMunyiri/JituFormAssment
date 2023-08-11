@@ -1,45 +1,55 @@
 const registerForm=document.getElementById('registerForm')
-const firstName=document.getElementById('firstName')
-const lastName=document.getElementById('lastName')
-const jituEmail=document.getElementById('jituEmail')
-const userCohort=document.getElementById('userCohort')
-const password=document.getElementById('password')
+const firstName=document.getElementById('firstName').value
+const lastName=document.getElementById('lastName').value
+const jituEmail=document.getElementById('jituEmail').value
+const userCohort=document.getElementById('userCohort').value
+const password=document.getElementById('password').value
+let userMessage=document.querySelector('.userMessage')
+
+let legitEmail=`${firstName.toLowerCase()}.${lastName.toLowerCase()}@thejitu.com`
 
 registerForm.addEventListener('submit',(e)=>{
     e.preventDefault()
     let user =
-    firstName.value !== "" &&
-    lastName.value !== "" &&
-    jituEmail.value !== "" &&
-    password.value !== "" &&
-    userCohort.value !== "";
+    firstName !== "" &&
+    lastName !== "" &&
+    jituEmail !== "" &&
+    password !== "" &&
+    userCohort !== "";
 
   if (user) {
-    axios
-      .post(
-        "http://localhost:6000/user/register",
+  
+    if(legitEmail){
+    const promise=new Promise((resolve,reject)=>{
+        fetch('http://localhost:4500/user/register', {
+            method: "POST",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 
+              "firstName": firstName,
+                    "lastName": lastName,
+                   "jituEmail":jituEmail,
+                 "password": password,
+                 "userCohort":userCohort
+            })
+          })
+          .then(res=>(res.json())).then(data=>{
+            console.log(data)
+            userMessage.textContent=data.message
+            userMessage.style.display="block"
+            window.location.href='./login.html'
 
-        {
-          firstName: firstName.value,
-          lastName: lastName.value,
-          jituEmail:jituEmail,
-        password: password.value,
-          userCohort: userCohort.value,
-        },
-
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-type": "application/json",
-          },
-        }
-      )
-      .then((response) => {
-        console.log(response.data);
-        window.location.href = "./login.html";
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+            resolve(data)
+          }).catch(error=>{
+            console.log(error)
+            userMessage.textContent=data.message
+            userMessage.style.display="block"
+            userMessage.style.color="red"
+            reject(error)
+          })
+    }) 
+}  
   }
 })
