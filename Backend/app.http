@@ -1,0 +1,21 @@
+//Register User
+
+POST http://localhost:6000/user/register
+Content-Type: application/json
+
+{
+    "firstName":"Abdul",
+    "lastName":"Munyiri",
+    "jituEmail":"abdul@gmail.com",
+    "userCohort":"1",
+    "password":"12345678"
+}
+
+###Login user
+POST http://localhost:6000/user/login
+Content-Type: application/json
+
+{
+"jituEmail":"abdul@gmail.com",
+    "password":"12345678"
+} 
