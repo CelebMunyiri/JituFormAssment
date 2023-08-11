@@ -40,8 +40,8 @@ const res = {
         it("should Not Register a User", async () => {
           jest.spyOn(bcrypt, "hash").mockResolvedValueOnce("yutruruyy");
           const mockUser = {
-            firstName: "David",
-            lastName:"Munyiri",
+            firstName: "lugybfyt",
+            lastName:"uygtrtg",
             jituEmail: "david.munyiri@thejitu.com",
             userCohort: "1",
             password: "Mahu12#34",
