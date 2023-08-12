@@ -23,14 +23,15 @@ it ('simulates user interaction', ()=>{
   
   cy.go('forward')
   
+  
 })
 it('Simulates user login and',()=>{
   cy.visit('http://127.0.0.1:5500/Frontend/login.html')
 
-  //cy.get('#loginjituEmail').type('david.mwangi@thejitu.com')
-  //cy.get('#loginjitupassword').type('Mahu#123')
-  //cy.get("#submit").click()
- // cy.go('forward')
+  cy.get('#loginjituEmail').type('david.mwangi@thejitu.com')
+  cy.get('#loginjitupassword').type('Mahu#123')
+  cy.get("#submit").click()
+  cy.go('forward')
  
 })
 })
