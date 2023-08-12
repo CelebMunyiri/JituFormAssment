@@ -3,12 +3,12 @@ const loginPassword=document.getElementById('loginjitupassword')
 const loginForm=document.getElementById('loginForm')
 const userMessage=document.querySelector('.userMessage')
 
-let legitEmail=`${firstName.toLowerCase()}.${lastName.toLowerCase()}@thejitu.com`
+
 
 loginForm.addEventListener('submit',(e)=>{
     e.preventDefault()
     user=loginEmail.value !=="" && loginPassword.value !==""
-    if(user && legitEmail){
+    if(user){
         const promise=new Promise((resolve,reject)=>{
             fetch('http://localhost:4500/user/login', {
                 method:"POST",
