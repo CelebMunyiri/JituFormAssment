@@ -13,3 +13,5 @@ BEGIN
 CATCH 
 THROW 50001,'User table Already created as sucess',1
 END CATCH
+
+select*from userTable
